@@ -1,0 +1,40 @@
+
+  
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+    z-index: 9999;
+  }
+  .cursor__inner {
+    stroke: #fff; 
+    fill: none;
+    stroke-width: 2px;
+    will-change: transform, opacity;
+  }
+
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; 
+    gap: 20px;
+  }
+  .header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
