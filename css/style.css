@@ -11,7 +11,7 @@
   .cursor__inner {
     stroke: #fff; 
     fill: none;
-    stroke-width: 2px;
+    stroke-width: 4px;
     will-change: transform, opacity;
   }
 
