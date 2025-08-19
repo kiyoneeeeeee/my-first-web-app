@@ -1,12 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h2 {
+      position: relative;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: bold;
+      overflow: hidden;
+      cursor: none; /* 望遠鏡カーソルを作るので通常カーソルは非表示 */
+    }
+
+   
+    p {
+      max-width: 600px;
+      margin-top: 20px;
+      line-height: 1.8;
+      opacity: 0.8;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+
+    /* 拡大用の「望遠鏡」効果 */
+    .magnifier {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      mix-blend-mode: screen;
+      backdrop-filter: blur(1px);
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    h2.hovered .magnifier {
+      display: block;
+    }
+
+    /* h2のテキストを拡大コピーしてmaskに使う */
+    h2::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      transform: scale(1.8);
+      clip-path: circle(80px at var(--x, 50%) var(--y, 50%));
+      transition: clip-path 0.1s;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Pages Site</h1>
-    <p>This is my first GitHub Pages deployment!</p>
+
+  <h2 id="headline" data-text="About Me">
+    About Me
+    <div class="magnifier"></div>
+  </h2>
+
+  <p>
+    札幌国際大学を卒業後、株式会社アルファコーポレーションへ入社し、保育士として勤務しました。<br>
+    現在はWeb制作・デザインのスキルを学びながらポートフォリオを構築中です。
+  </p>
+
+  <script>
+    const headline = document.getElementById("headline");
+    const magnifier = headline.querySelector(".magnifier");
+
+    headline.addEventListener("mousemove", (e) => {
+      const rect = headline.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // カスタムプロパティに座標を反映
+      headline.style.setProperty("--x", `${x}px`);
+      headline.style.setProperty("--y", `${y}px`);
+
+      // 望遠鏡カーソルを動かす
+      magnifier.style.left = `${x}px`;
+      magnifier.style.top = `${y}px`;
+    });
+
+    headline.addEventListener("mouseenter", () => {
+      headline.classList.add("hovered");
+    });
+
+    headline.addEventListener("mouseleave", () => {
+      headline.classList.remove("hovered");
+    });
+  </script>
+
 </body>
 </html>
