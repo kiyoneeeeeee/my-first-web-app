@@ -20,7 +20,7 @@
       text-align: center;
     }
 
-    h2 {
+    h1 {
       position: relative;
       font-size: clamp(2rem, 6vw, 4rem);
       font-weight: bold;
@@ -54,11 +54,11 @@
       display: none;
     }
 
-    h2.hovered .magnifier {
+    h1.hovered .magnifier {
       display: block;
     }
 
-    h2::before {
+    h1::before {
       content: attr(data-text);
       position: absolute;
       top: 0;
@@ -75,14 +75,13 @@
 </head>
 <body>
 
-  <h2 id="headline" data-text="About Me">
+  <h1 id="headline" data-text="About Me">
     About Me
-    <div class="magnifier"></div>
-  </h2>
+  </h1>
 
   <p>
     札幌国際大学を卒業後、株式会社アルファコーポレーションへ入社し、保育士として勤務しました。<br>
-    保育士をしている期間中は自分のPCすら持っていない状況。転職のタイミングまでスプレットシートの存在を知りませんでした<br>
+    保育士をしている期間中は自分のPCすら持っていない状況。しかも転職のタイミングまでスプレットシートの存在を知りませんでした<br>
     その後紆余曲折ありながらもITの道に進むことを決め、今現在も地道に勉強を続けています。
   </p>
 
